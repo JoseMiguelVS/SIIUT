@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+
+{% block title %} Lista de Cuatrimestres {% endblock title %} 
+
+{% block content %}
+<a href="{% url 'career:quarter_create' %}">Nuevo Cuatri</a>
+<table>
+  <thead>
+    <tr>
+      <th> ID </th> 
+      <th> CUATRIMESTRE No. </th>
+      <th> CUATRIMESTRE </th>
+      <th> ACCIONES </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for quarter in quarters %}
+    <tr>
+      <td>{{quarter.quarter}}</td>
+      <td>{{quarter.quarter}}</td>
+      <td>{{quarter.quarter_name}}</td>
+      <td><a href="{% url 'career:quarter_details' quarter.id %}">Detalles</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
