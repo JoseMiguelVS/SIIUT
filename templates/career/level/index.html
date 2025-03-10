@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de Niveles
+{% endblock title %}
+
+
+{% block content %}
+    <br>
+    <a 
+    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    href="{% url 'career:level_create' %}">
+    Nuevo nivel</a>
+    <br>
+    <table>
+        <br>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nivel</th>
+                <th>Abreviatura</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for level in levels %}
+                <tr>
+                    <td>{{ level.id }}</td>
+                    <td>{{ level.name }}</td>
+                    <td>{{ level.short_name }}</td>
+                    <td>
+                        <a href="{% url 'career:level_details' level.id %}">Detalles</a>
+                        <!-- <a href="{% url 'career:level_update' level.id %}">Editar</a>
+                        <a href="{% url 'career:level_delete' level.id %}">Eliminar</a> -->
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
+    

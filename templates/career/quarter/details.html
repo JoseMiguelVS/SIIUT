@@ -1,11 +1,20 @@
+{% extends 'base.html' %} {% block title %} Detalles de Cuatrimestres {% endblock title %} 
+{% block content %}
 <div>
   <h1>Detalles de {{ quarter }}</h1>
   <p>{{ quarter.quarter }}</p>
   <p>{{ quarter.quarter_name }}</p>
-  <a href="{% url 'career:quarter_update' quarter.id %}">Actualizar</a>
+  <br>
+  <a class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" href="{% url 'career:quarter_update' quarter.id %}">Actualizar</a>
+
   <form action="{% url 'career:quarter_delete' quarter.id %}" method="post">
     {% csrf_token %}
-    <button type="submit" onclick="confirm('Seguro?')">Eliminar</button>
+    <br>
+    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" type="submit" onclick="confirm('Seguro?')">Eliminar</button>
+
   </form>
-  <a href="{% url 'career:quarter_list' %}">Regresar</a>
+  <br>
+  <a class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" href="{% url 'career:quarter_list' %}">Regresar</a>
 </div>
+
+{% endblock content %}
