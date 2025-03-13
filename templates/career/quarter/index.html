@@ -8,23 +8,23 @@
   class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" 
   href="{% url 'career:quarter_create' %}">Nuevo Cuatri</a>
 <br>
-<table>
+<table class="border-collapse border border-gray-400">
   <br>
   <thead>
     <tr>
-      <th> ID </th> 
-      <th> CUATRIMESTRE No. </th>
-      <th> CUATRIMESTRE </th>
-      <th> ACCIONES </th>
+      <th class="border border-gray-800 border-separate p-2" > Id </th> 
+      <th class="border border-gray-800 border-separate p-2" > Cuatrimestre No. </th>
+      <th class="border border-gray-800 border-separate p-2" > Cuatrimestre </th>
+      <th class="border border-gray-800 border-separate p-2" > Acciones </th>
     </tr>
   </thead>
   <tbody>
     {% for quarter in quarters %}
     <tr>
-      <td>{{quarter.quarter}}</td>
-      <td>{{quarter.quarter}}</td>
-      <td>{{quarter.quarter_name}}</td>
-      <td><a href="{% url 'career:quarter_details' quarter.id %}">Detalles</a></td>
+      <td class="border text-center border-gray-800">{{quarter.quarter}}</td>
+      <td class="border text-center border-gray-800">{{quarter.quarter}}</td>
+      <td class="border text-center border-gray-800">{{quarter.quarter_name}}</td>
+      <td class="border text-center border-gray-800"><a href="{% url 'career:quarter_details' quarter.id %}">Detalles</a></td>
     </tr>
     {% endfor %}
   </tbody>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% block title %} Detalles de Carreras {% endblock title %} 
+{% block content %}
+<div>
+  <h1>Detalles de {{ career }}</h1>
+  <p>{{ career.name }}</p>
+  <p>{{ career.short_name }}</p>
+  <br />
+  <a
+    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    href="{% url 'career:career_update' career.id %}"
+    >Actualizar</a
+  >
+
+  <form action="{% url 'career:career_delete' career.id %}" method="post">
+    {% csrf_token %}
+    <br />
+    <button
+      class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+      type="submit"
+      onclick="confirm('Seguro?')"
+    >
+      Eliminar
+    </button>
+  </form>
+  <br />
+  <a
+    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    href="{% url 'career:career_list' %}"
+    >Regresar</a
+  >
+</div>
+
+{% endblock content %}

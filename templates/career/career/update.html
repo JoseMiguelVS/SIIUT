@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Actualizar Cuatrimestre
+    Actualizar Carrera
 {% endblock title %}
 
 {% block content %}
@@ -9,8 +9,8 @@
     {% csrf_token %}
     {{ form }}
     <input 
-    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-    type="submit" value="Actualizar" 
+        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" 
+        type="submit" value="Actualizar" 
     />
 </form>
 {% endblock content %}

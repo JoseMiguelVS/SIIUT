@@ -12,23 +12,23 @@
     href="{% url 'career:level_create' %}">
     Nuevo nivel</a>
     <br>
-    <table>
+    <table class="border-collapse border border-gray-400">
         <br>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nivel</th>
-                <th>Abreviatura</th>
-                <th>Acciones</th>
+                <th class="border border-gray-800 border-separate p-2">Id</th>
+                <th class="border border-gray-800 border-separate p-2">Nivel</th>
+                <th class="border border-gray-800 border-separate p-2">Abreviatura</th>
+                <th class="border border-gray-800 border-separate p-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for level in levels %}
                 <tr>
-                    <td>{{ level.id }}</td>
-                    <td>{{ level.name }}</td>
-                    <td>{{ level.short_name }}</td>
-                    <td>
+                    <td class="border text-center border-gray-800">{{ level.id }}</td>
+                    <td class="border text-center border-gray-800">{{ level.name }}</td>
+                    <td class="border text-center border-gray-800">{{ level.short_name }}</td>
+                    <td class="border text-center border-gray-800">
                         <a href="{% url 'career:level_details' level.id %}">Detalles</a>
                         <!-- <a href="{% url 'career:level_update' level.id %}">Editar</a>
                         <a href="{% url 'career:level_delete' level.id %}">Eliminar</a> -->

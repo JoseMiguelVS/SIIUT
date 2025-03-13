@@ -3,8 +3,8 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
-from .forms import QuarterForm
-from .models import Quarter, Level
+from .forms import QuarterForm, LevelForm, CareerForm
+from .models import Quarter, Level, Career
 
 # CRUD Views for Quarter
 
@@ -76,13 +76,13 @@ class LevelDetailView(DetailView):
     
 class LevelCreateView(CreateView):
     model = Level
-    fields = ['name', 'short_name']
+    form_class = LevelForm
     template_name = 'career/level/create.html'
     success_url = reverse_lazy('career:level_list')
     
 class LevelUpdateView(UpdateView):
     model = Level
-    fields = ['name', 'short_name']
+    form_class = LevelForm
     template_name = 'career/level/update.html'
     success_url = reverse_lazy('career:level_list')
 
@@ -90,3 +90,32 @@ class LevelDeleteView(DeleteView):
     model = Level
     template_name = 'career/level/delete.html'
     success_url = reverse_lazy('career:level_list')
+
+#---------------------------------------------------------------------------------------------------
+# Vistas basadas en clases para career model
+class CareerListView(ListView):
+    model = Career
+    template_name = 'career/career/index.html'
+    context_object_name = 'careers'
+    
+class CareerDetailView(DetailView):
+    model = Career
+    template_name = 'career/career/details.html'
+    context_object_name = 'career'
+    
+class CareerCreateView(CreateView):
+    model = Career
+    form_class = CareerForm
+    template_name = 'career/career/create.html'
+    success_url = reverse_lazy('career:career_list')
+    
+class CareerUpdateView(UpdateView):
+    model = Career
+    form_class = CareerForm
+    template_name = 'career/career/update.html'
+    success_url = reverse_lazy('career:career_list')
+    
+class CareerDeleteView(DeleteView):
+    model = Career
+    template_name = 'career/career/delete.html'
+    success_url = reverse_lazy('career:career_list')

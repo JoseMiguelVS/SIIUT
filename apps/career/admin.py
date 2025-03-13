@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Career, Subject, Level, Quarter
-from . import views
+# from . import views
 
 admin.site.register(Level)
 admin.site.register(Quarter)

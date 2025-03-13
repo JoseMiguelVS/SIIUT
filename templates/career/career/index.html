@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de Carreras
+{% endblock title %}
+
+
+{% block content %}
+    <br>
+    <a 
+    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    href="{% url 'career:career_create' %}">
+    Nuevo nivel</a>
+    <br>
+    <table class="border-collapse border border-gray-400">
+        <br>
+        <thead>
+            <tr>
+                <th class="border border-gray-800 border-separate p-2">Id</th>
+                <th class="border border-gray-800 border-separate p-2">Nombre</th>
+                <th class="border border-gray-800 border-separate p-2">Abreviatura</th>
+                <th class="border border-gray-800 border-separate p-2">Nivel</th>
+                <th class="border border-gray-800 border-separate p-2">Activo</th>
+                <th class="border border-gray-800 border-separate p-2">Principal</th>
+                <th class="border border-gray-800 border-separate p-2">Año</th>
+                <th class="border border-gray-800 border-separate p-2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for career in careers %}
+                <tr>
+                    <td class="border text-center border-gray-800">{{ career.id }}</td>
+                    <td class="border text-center border-gray-800">{{ career.name }}</td>
+                    <td class="border text-center border-gray-800">{{ career.short_name }}</td>
+                    <td class="border text-center border-gray-800">{{ career.level }}</td>
+                    <td class="border text-center border-gray-800">{{ career.is_active }}</td>
+                    <td class="border text-center border-gray-800">{{ career.principal }}</td>
+                    <td class="border text-center border-gray-800">{{ career.year }}</td>
+                    <td class="border text-center border-gray-800">
+                        <a href="{% url 'career:career_details' career.id %}">Detalles</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
+    
