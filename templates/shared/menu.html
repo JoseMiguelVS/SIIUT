@@ -21,6 +21,8 @@
         Contacto
       </a>
     </li>
+    
+    {% if user.is_authenticated %}      
     <li>
       <a
         class="block w-[200px] bg-slate-200 hover:bg-slate-400 m-2 rounded-md p-2"
@@ -42,5 +44,6 @@
         Carrera
       </a>
     </li>
+    {% endif %}
   </ul>
 </nav>

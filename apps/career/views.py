@@ -7,6 +7,7 @@ from .forms import QuarterForm, LevelForm, CareerForm
 from .models import Quarter, Level, Career
 
 # CRUD Views for Quarter
+#---------------------------------------------------------------------------------------------------
 
 def quarter_list(request):
     quarters = Quarter.objects.all()
@@ -15,7 +16,6 @@ def quarter_list(request):
     }
     return render(request, 'career/quarter/index.html', context)
 
-#---------------------------------------------------------------------------------------------------
 def quarter_create(request):
     if request.method == 'POST':
         form = QuarterForm(request.POST)
@@ -30,14 +30,12 @@ def quarter_create(request):
         form = QuarterForm()
         return render(request, 'career/quarter/create.html', {'form': form})
     
-#---------------------------------------------------------------------------------------------------
 def quarter_details(request, q_id):
     quarter = Quarter.objects.get(pk=q_id)
     return render(request, 
                   'career/quarter/details.html',
                   {'quarter': quarter})
     
-#---------------------------------------------------------------------------------------------------
 def quarter_update(request, q_id):
     q = Quarter.objects.get(pk=q_id)
     if request.method == 'POST':
@@ -55,7 +53,6 @@ def quarter_update(request, q_id):
                     'career/quarter/update.html',
                     {'form': form})
         
-#---------------------------------------------------------------------------------------------------
 def quarter_delete(request, q_id):
     if request.method == 'POST':
         q = Quarter.objects.get(pk=q_id)
