@@ -1,35 +1,36 @@
 {% extends 'base.html' %} 
 {% block title %} Detalles de Carreras {% endblock title %} 
 {% block content %}
-<h1 class="text-2xl truncate">Detalles</h1>
 <div>
-  <h1>Detalles de {{ career }}</h1>
-  <p>{{ career.name }}</p>
-  <p>{{ career.short_name }}</p>
+  <h1 class="text-3xl">Detalles de {{ career }}</h1>
+  <p class="text-2xl">Nombre: {{ career.name }}</p>
+  <p class="text-2xl">Abreviatura: {{ career.short_name }}</p>
   <br />
+  <h2 class="text-2xl">Plan de carrera</h2>
+  <br>
+  <a class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 mt-2 border border-gray-400 rounded shadow" 
+  href="{% url 'career:subject_list' career.id %}">Ir</a>
+  <br>
+  <br>
   <a
-    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 mt-2 border border-gray-400 rounded shadow"
     href="{% url 'career:career_update' career.id %}"
-    >Actualizar</a
-  >
+    >Actualizar</a>
 
   <form action="{% url 'career:career_delete' career.id %}" method="post">
     {% csrf_token %}
-    <br />
     <button
-      class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+      class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 mt-2 border border-gray-400 rounded shadow"
       type="submit"
-      onclick="confirm('Seguro?')"
-    >
+      onclick="confirm('Seguro?')">
       Eliminar
     </button>
   </form>
-  <br />
+  <br>
   <a
-    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 mt-4 border border-gray-400 rounded shadow"
     href="{% url 'career:career_list' %}"
-    >Regresar</a
-  >
+    >Regresar</a>
 </div>
 
 {% endblock content %}

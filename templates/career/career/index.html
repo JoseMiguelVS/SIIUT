@@ -4,45 +4,42 @@
     Lista de Carreras
 {% endblock title %}
 
-
 {% block content %}
-<h1 class="text-2xl truncate">Carrera</h1>
+<h1 class="text-2xl text-purple-700 font-bold">Carrera</h1>
     <br>
     <a 
-    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    class="bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 border border-purple-500 rounded shadow"
     href="{% url 'career:career_create' %}">
     Nueva carrera</a>
     <br>
-    <table class="border-collapse border border-gray-400">
-        <br>
+    <table class="border-collapse border border-purple-500 w-full mt-4">
         <thead>
-            <tr>
-                <th class="border border-gray-800 border-separate p-2">Id</th>
-                <th class="border border-gray-800 border-separate p-2">Nombre</th>
-                <th class="border border-gray-800 border-separate p-2">Abreviatura</th>
-                <th class="border border-gray-800 border-separate p-2">Nivel</th>
-                <th class="border border-gray-800 border-separate p-2">Activo</th>
-                <th class="border border-gray-800 border-separate p-2">Principal</th>
-                <th class="border border-gray-800 border-separate p-2">Año</th>
-                <th class="border border-gray-800 border-separate p-2">Acciones</th>
+            <tr class="bg-gray-400 text-black">
+                <th class="border border-purple-500 p-2">Id</th>
+                <th class="border border-purple-500 p-2">Nombre</th>
+                <th class="border border-purple-500 p-2">Abreviatura</th>
+                <th class="border border-purple-500 p-2">Nivel</th>
+                <th class="border border-purple-500 p-2">Activo</th>
+                <th class="border border-purple-500 p-2">Principal</th>
+                <th class="border border-purple-500 p-2">Año</th>
+                <th class="border border-purple-500 p-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for career in careers %}
-                <tr>
-                    <td class="border text-center border-gray-800">{{ career.id }}</td>
-                    <td class="border text-center border-gray-800">{{ career.name }}</td>
-                    <td class="border text-center border-gray-800">{{ career.short_name }}</td>
-                    <td class="border text-center border-gray-800">{{ career.level }}</td>
-                    <td class="border text-center border-gray-800">{{ career.is_active }}</td>
-                    <td class="border text-center border-gray-800">{{ career.principal }}</td>
-                    <td class="border text-center border-gray-800">{{ career.year }}</td>
-                    <td class="border text-center border-gray-800">
-                        <a href="{% url 'career:career_details' career.id %}">Detalles</a>
+                <tr class="bg-transparent hover:bg-purple-200">
+                    <td class="border border-purple-400 text-center p-2">{{ career.id }}</td>
+                    <td class="border border-purple-400 text-center p-2">{{ career.name }}</td>
+                    <td class="border border-purple-400 text-center p-2">{{ career.short_name }}</td>
+                    <td class="border border-purple-400 text-center p-2">{{ career.level }}</td>
+                    <td class="border border-purple-400 text-center p-2">{{ career.is_active }}</td>
+                    <td class="border border-purple-400 text-center p-2">{{ career.principal }}</td>
+                    <td class="border border-purple-400 text-center p-2">{{ career.year }}</td>
+                    <td class="border border-purple-400 text-center p-2">
+                        <a class="text-purple-700 hover:underline" href="{% url 'career:career_details' career.id %}">Detalles</a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock content %}
-    
