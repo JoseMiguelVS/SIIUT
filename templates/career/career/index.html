@@ -36,10 +36,15 @@
                     <td class="border border-purple-400 text-center p-2">{{ career.principal }}</td>
                     <td class="border border-purple-400 text-center p-2">{{ career.year }}</td>
                     <td class="border border-purple-400 text-center p-2">
-                        <a class="text-purple-700 hover:underline" href="{% url 'career:career_details' career.id %}">Detalles</a>
+                        <a 
+                            class="text-purple-700 hover:underline" 
+                            href="{% url 'career:career_details' career.id %}">Detalles
+                            <i class="ri-info-i ri-lg"></i>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    
 {% endblock content %}

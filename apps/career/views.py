@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
-from .forms import QuarterForm, LevelForm, CareerForm
+from .forms import QuarterForm, LevelForm, CareerForm, SubjectForm
 from .models import Quarter, Level, Career, Subject
 
 # CRUD Views for Quarter
@@ -136,16 +136,34 @@ class SubjectListView(ListView):
         id_career = self.kwargs.get('career_id')
         context['career'] = Career.objects.get(pk=id_career)
         return context
+    
+class SubjectCreateView(CreateView):
+    model = Subject
+    form_class = SubjectForm
+    template_name = 'career/subject/create.html'
+    success_url = reverse_lazy('career:subject_list')
+    
+    def form_valid(self, form):
+        id_career = self.kwargs.get('career_id')
+        career = Career.objects.get(id=id_career)
+        form.instance.career = career
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        id_career = self.kwargs.get('career_id')
+        return reverse_lazy('career:subject_list', kwargs={'career_id': id_career})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        id_career = self.kwargs.get('career_id')
+        context['career'] = Career.objects.get(pk=id_career)
+        return context
                 
 # class SubjectDetailView(DetailView):
 #     model = Subject
 #     template_name = 'career/subject/details.html'
 #     context_object_name = 'subject'
     
-# class SubjectCreateView(CreateView):
-#     model = Subject
-#     template_name = 'career/subject/create.html'
-#     success_url = reverse_lazy('career:subject_list')
 
 # class SubjectUpdateView(UpdateView):
 #     model = Subject

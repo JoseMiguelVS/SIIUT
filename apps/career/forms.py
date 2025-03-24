@@ -1,5 +1,5 @@
 from django import forms
-from .models import Quarter, Level, Career
+from .models import Quarter, Level, Career, Subject
 
 input_class = 'border border-gray-400 p-1 rounded-xl mt-2'
 
@@ -32,4 +32,16 @@ class CareerForm(forms.ModelForm):
             'is_active': forms.CheckboxInput(attrs={'class':input_class}),
             'principal': forms.Select(attrs={'class':input_class}),
             'year': forms.TextInput(attrs={'class':input_class})
+        }
+        
+class SubjectForm(forms.ModelForm):
+    class Meta:
+        model = Subject
+        fields = ['quarter', 'name', 'total_hours', 'weekly_hours']
+        widgets = {
+            # 'career': forms.Select(attrs={'class':input_class}),
+            'quarter': forms.Select(attrs={'class':input_class}),
+            'name': forms.TextInput(attrs={'class':input_class}),
+            'total_hours': forms.TextInput(attrs={'class':input_class}),
+            'weekly_hours': forms.TextInput(attrs={'class':input_class})
         }

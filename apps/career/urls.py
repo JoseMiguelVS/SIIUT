@@ -21,8 +21,8 @@ urlpatterns = [
     path('career/<int:pk>/update/', views.CareerUpdateView.as_view(), name='career_update'),
     path('career/<int:pk>/delete/', views.CareerDeleteView.as_view(), name='career_delete'),
     
-    path('subject/<int:career_id>/', views.SubjectListView.as_view(), name='subject_list'),
-    # path('subject/create/', views.SubjectCreateView.as_view(), name='subject_create'),
+    path('<int:career_id>/subject', views.SubjectListView.as_view(), name='subject_list'),
+    path('<int:career_id>/subject/create/', views.SubjectCreateView.as_view(), name='subject_create'),
     # path('subject/<int:pk>/details/', views.SubjectDetailView.as_view(), name='subject_details'),
     # path('subject/<int:pk>/update/', views.SubjectUpdateView.as_view(), name='subject_update'),
     # path('subject/<int:pk>/delete/', views.SubjectDeleteView.as_view(), name='subject_delete'),

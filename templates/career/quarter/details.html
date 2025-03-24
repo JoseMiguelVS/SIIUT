@@ -1,10 +1,9 @@
 {% extends 'base.html' %} {% block title %} Detalles de Cuatrimestres {% endblock title %} 
 {% block content %}
-<h1 class="text-2xl truncate">Detalles Cuatrimestre</h1>
+<h1 class="text-2xl truncate">Detalles de Cuatrimestre</h1>
 <div>
-  <h1>Detalles de {{ quarter }}</h1>
-  <p>{{ quarter.quarter }}</p>
-  <p>{{ quarter.quarter_name }}</p>
+  <p class="text-2xl">Grado: {{ quarter.quarter }}°</p>
+  <p class="text-2xl">Nombre: {{ quarter.quarter_name }}</p>
   <br>
   <a class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" href="{% url 'career:quarter_update' quarter.id %}">Actualizar</a>
 
