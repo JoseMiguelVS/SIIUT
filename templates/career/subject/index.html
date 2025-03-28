@@ -17,6 +17,7 @@
                 <th class="border border-purple-500 p-2">Cuatrimestre</th>
                 <th class="border border-purple-500 p-2">Horas totales</th>
                 <th class="border border-purple-500 p-2">Horas Semanales</th>
+                <th class="border border-purple-500 p-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,13 @@
                     <td class="border border-purple-400 text-center p-2">{{ subject.quarter }}</td>
                     <td class="border border-purple-400 text-center p-2">{{ subject.total_hours }}</td>
                     <td class="border border-purple-400 text-center p-2">{{ subject.weekly_hours }}</td>
+                    <td class="border border-purple-400 text-center p-2">
+                        <a 
+                            class="text-purple-700 hover:underline" 
+                            href="{% url 'career:subject_update' career.id subject.id %}">
+                            Actualizar
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
